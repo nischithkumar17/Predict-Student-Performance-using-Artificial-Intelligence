@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Student Performance Predictor</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    
+
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<link
+rel="stylesheet"
+href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+</head>
+
+<body>
+
+    <!-- Background -->
+
+    <div class="background">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Navbar -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-graduation-cap"></i>
+
+            <span>AI Predictor</span>
+
+        </div>
+
+        <ul>
+
+            <li><a href="#">Home</a></li>
+
+            <li><a href="#predict">Predict</a></li>
+
+            <li><a href="#about">About</a></li>
+
+            <li><a href="#contact">Contact</a></li>
+
+        </ul>
+
+    </nav>
+
+    <!-- Hero -->
+
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <h1>
+
+                Predict Student Performance using
+                <span>Artificial Intelligence</span>
+
+            </h1>
+
+            <p>
+
+                Enter the student's academic information below and let our Machine
+                Learning model estimate the final exam score, grade,
+                and overall performance instantly.
+
+            </p>
+
+            <button onclick="document.getElementById('predict').scrollIntoView({behavior:'smooth'})">
+
+                Start Prediction
+
+            </button>
+
+        </div>
+
+        <div class="hero-image">
+
+            <i class="fa-solid fa-robot"></i>
+
+        </div>
+
+    </section>
+
+    <section class="stats">
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-brain"></i>
+
+        <h3>Random Forest</h3>
+
+        <p>Machine Learning Model</p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-bullseye"></i>
+
+        <h3>65%</h3>
+
+        <p>R² Accuracy</p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-bolt"></i>
+
+        <h3>&lt; 1 sec</h3>
+
+        <p>Prediction Speed</p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-server"></i>
+
+        <h3>FastAPI</h3>
+
+        <p>Backend API</p>
+
+    </div>
+
+</section>
+
+    <!-- Dashboard -->
+
+    <section id="predict" class="dashboard">
+
+        <div class="left-panel">
+
+            <div class="glass-card">
+
+                <h2>
+
+                    Student Information
+
+                </h2>
+
+                <form id="predictionForm">
+
+                    <div class="grid">
+
+                        <!-- Hours Studied -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Hours Studied
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="Hours_Studied"
+                                step="0.1"
+                                required>
+
+                        </div>
+
+                        <!-- Attendance -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Attendance (%)
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="Attendance"
+                                required>
+
+                        </div>
+
+                        <!-- Previous Score -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Previous Score
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="Previous_Scores"
+                                required>
+
+                        </div>
+
+                        <!-- Sleep -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Sleep Hours
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="Sleep_Hours"
+                                required>
+
+                        </div>
+
+                        <!-- Tutoring -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Tutoring Sessions
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="Tutoring_Sessions"
+                                required>
+
+                        </div>
+
+                        <!-- Physical -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Physical Activity
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="Physical_Activity"
+                                required>
+
+                        </div>
+
+                        <!-- Motivation -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Motivation Level
+
+                            </label>
+
+                            <select id="Motivation_Level">
+
+                                <option>Low</option>
+
+                                <option>Medium</option>
+
+                                <option>High</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Parent Involvement -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Parent Involvement
+
+                            </label>
+
+                            <select id="Parental_Involvement">
+
+                                <option>Low</option>
+
+                                <option>Medium</option>
+
+                                <option>High</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Resources -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Access to Resources
+
+                            </label>
+
+                            <select id="Access_to_Resources">
+
+                                <option>Low</option>
+
+                                <option>Medium</option>
+
+                                <option>High</option>
+
+                            </select>
+
+                        </div>
+                                                <!-- Extracurricular Activities -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Extracurricular Activities
+
+                            </label>
+
+                            <select id="Extracurricular_Activities">
+
+                                <option>Yes</option>
+
+                                <option>No</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Internet Access -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Internet Access
+
+                            </label>
+
+                            <select id="Internet_Access">
+
+                                <option>Yes</option>
+
+                                <option>No</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Family Income -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Family Income
+
+                            </label>
+
+                            <select id="Family_Income">
+
+                                <option>Low</option>
+
+                                <option>Medium</option>
+
+                                <option>High</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Teacher Quality -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Teacher Quality
+
+                            </label>
+
+                            <select id="Teacher_Quality">
+
+                                <option>Low</option>
+
+                                <option>Medium</option>
+
+                                <option>High</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- School Type -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                School Type
+
+                            </label>
+
+                            <select id="School_Type">
+
+                                <option>Public</option>
+
+                                <option>Private</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Peer Influence -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Peer Influence
+
+                            </label>
+
+                            <select id="Peer_Influence">
+
+                                <option>Negative</option>
+
+                                <option>Neutral</option>
+
+                                <option>Positive</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Learning Disabilities -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Learning Disabilities
+
+                            </label>
+
+                            <select id="Learning_Disabilities">
+
+                                <option>No</option>
+
+                                <option>Yes</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Parent Education -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Parent Education
+
+                            </label>
+
+                            <select id="Parental_Education_Level">
+
+                                <option>High School</option>
+
+                                <option>College</option>
+
+                                <option>Postgraduate</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Distance -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Distance From Home
+
+                            </label>
+
+                            <select id="Distance_from_Home">
+
+                                <option>Near</option>
+
+                                <option>Moderate</option>
+
+                                <option>Far</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Gender -->
+
+                        <div class="input-box">
+
+                            <label>
+
+                                Gender
+
+                            </label>
+
+                            <select id="Gender">
+
+                                <option>Male</option>
+
+                                <option>Female</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <button class="predict-btn" type="submit">
+
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                        Predict Performance
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <!-- Right Panel -->
+
+        <div class="right-panel">
+
+            <div class="glass-card result-card">
+
+                <h2>
+
+                    Prediction Result
+
+                </h2>
+
+                <div class="score-circle">
+
+                  <div class="outer-circle">
+
+                     <div class="inner-circle">
+
+                        <span id="predictedScore">
+
+                --
+
+                        </span>
+
+                     </div>
+
+                  </div>
+
+                </div>
+
+                <div class="result-grid">
+
+                    <div class="result-item">
+
+                        <h3>
+
+                            Grade
+
+                        </h3>
+
+                        <p id="grade">
+
+                            --
+
+                        </p>
+
+                    </div>
+
+                    <div class="result-item">
+
+                        <h3>
+
+                            Status
+
+                        </h3>
+
+                        <p id="pass">
+
+                            --
+
+                        </p>
+
+                    </div>
+
+                    <div class="result-item">
+
+                        <h3>
+
+                            Performance
+
+                        </h3>
+
+                        <p id="performance">
+
+                            --
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="glass-card">
+
+                <h2>
+
+                    AI Study Recommendation
+
+                </h2>
+
+                <div id="recommendation">
+
+                    <p>
+
+                        After prediction, AI-powered study recommendations
+                        will appear here to help students improve their
+                        academic performance.
+
+                    </p>
+
+                </div>
+                
+                <button id="downloadPDF" class="download-btn">
+                   📄 Download PDF Report
+                 </button>
+            </div>
+
+            <div class="glass-card">
+
+                <h2>
+
+                    Quick Tips
+
+                </h2>
+
+                <ul class="tips">
+
+                    <li>📚 Study consistently every day.</li>
+
+                    <li>😴 Sleep 7–8 hours for better memory.</li>
+
+                    <li>📝 Revise previous topics regularly.</li>
+
+                    <li>🎯 Attend classes consistently.</li>
+
+                    <li>💡 Ask questions whenever you have doubts.</li>
+
+                </ul>
+
+            </div>
+            
+        <!-- Prediction History -->
+
+<div class="history-card">
+
+    <div class="history-header">
+
+        <h2>Prediction History</h2>
+
+        <button id="downloadCSV" class="download-btn">
+            📥 Download CSV
+        </button>
+          
+        <button id="clearHistory" class="download-btn">
+            🗑 Clear History
+        </button>
+    </div>
+
+    <table id="historyTable">
+
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Score</th>
+                <th>Grade</th>
+                <th>Performance</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+    </table>
+
+</div>  
+ <div class="glass-card">
+    <h2>Prediction Analytics</h2>
+
+    <canvas id="scoreChart" height="120"></canvas>
+</div> 
+        </div>
+
+    </section>
+
+    <!-- About -->
+
+    <section id="about" class="about">
+
+        <h2>
+
+            About This Project
+
+        </h2>
+
+        <p>
+
+            This AI Student Performance Predictor uses Machine Learning to
+            estimate a student's final exam score based on academic,
+            personal, and environmental factors. It is developed as a
+            capstone project using HTML, CSS, JavaScript, FastAPI,
+            Python, and Scikit-learn.
+
+        </p>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer id="contact">
+
+        <p>
+
+            © 2026 AI Student Performance Predictor | Built with ❤️ using
+            Machine Learning & FastAPI
+
+        </p>
+
+    </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({
+    duration:1000,
+    once:true
+});
+</script>
+
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Your JavaScript -->
+<script src="script.js"></script>
+
+<!-- jsPDF Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- Your JavaScript -->
+<script src="script.js"></script>
+
+</body>
+
+</body>
+</html>
